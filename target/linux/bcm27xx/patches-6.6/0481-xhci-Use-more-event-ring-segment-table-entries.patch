@@ -22,7 +22,7 @@ Signed-off-by: Jonathan Bell <jonathan@raspberrypi.com>
 
 --- a/drivers/usb/host/xhci-mem.c
 +++ b/drivers/usb/host/xhci-mem.c
-@@ -2239,12 +2239,17 @@ xhci_alloc_interrupter(struct xhci_hcd *
+@@ -2241,12 +2241,17 @@ xhci_alloc_interrupter(struct xhci_hcd *
  	struct device *dev = xhci_to_hcd(xhci)->self.sysdev;
  	struct xhci_interrupter *ir;
  	int ret;
@@ -41,7 +41,7 @@ Signed-off-by: Jonathan Bell <jonathan@raspberrypi.com>
  					0, flags);
  	if (!ir->event_ring) {
  		xhci_warn(xhci, "Failed to allocate interrupter event ring\n");
-@@ -2281,7 +2286,7 @@ xhci_add_interrupter(struct xhci_hcd *xh
+@@ -2283,7 +2288,7 @@ xhci_add_interrupter(struct xhci_hcd *xh
  	/* set ERST count with the number of entries in the segment table */
  	erst_size = readl(&ir->ir_set->erst_size);
  	erst_size &= ERST_SIZE_MASK;
@@ -52,7 +52,7 @@ Signed-off-by: Jonathan Bell <jonathan@raspberrypi.com>
  	erst_base = xhci_read_64(xhci, &ir->ir_set->erst_base);
 --- a/drivers/usb/host/xhci.h
 +++ b/drivers/usb/host/xhci.h
-@@ -1674,8 +1674,9 @@ struct urb_priv {
+@@ -1679,8 +1679,9 @@ struct urb_priv {
   * Each segment table entry is 4*32bits long.  1K seems like an ok size:
   * (1K bytes * 8bytes/bit) / (4*32 bits) = 64 segment entries in the table,
   * meaning 64 ring segments.
