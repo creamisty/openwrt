@@ -264,7 +264,7 @@ Sighed-off-by: Philip Prindeville <philipp@redfish-solutions.com>
  		return -ENODEV;
  	}
  
-@@ -288,7 +374,7 @@ module_init(apu_board_init);
+@@ -288,7 +374,12 @@ module_init(apu_board_init);
  module_exit(apu_board_exit);
  
  MODULE_AUTHOR("Enrico Weigelt, metux IT consult <info@metux.net>");
@@ -272,4 +272,9 @@ Sighed-off-by: Philip Prindeville <philipp@redfish-solutions.com>
 +MODULE_DESCRIPTION("PC Engines APUv2-6 board GPIO/LEDs/keys driver");
  MODULE_LICENSE("GPL");
  MODULE_DEVICE_TABLE(dmi, apu_gpio_dmi_table);
++MODULE_ALIAS("platform:pcengines-apuv2");
++MODULE_ALIAS("platform:pcengines-apuv3");
++MODULE_ALIAS("platform:pcengines-apuv4");
++MODULE_ALIAS("platform:pcengines-apuv5");
++MODULE_ALIAS("platform:pcengines-apuv6");
  MODULE_SOFTDEP("pre: platform:" AMD_FCH_GPIO_DRIVER_NAME " platform:leds-gpio platform:gpio_keys_polled");
